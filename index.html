@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<style>*,*::before,*::after{box-sizing:border-box}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Dům ve Starých Splavech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: jeden sloupec jako dopis, foto pruhy přes šířku, důvody jako velká čísla, skupiny vedle reklamních náhledů */
+:root{
+  --bg:#f3f5f1;        /* mlha nad jezerem */
+  --paper:#ffffff;
+  --ink:#1d2a26;       /* borovice */
+  --muted:#5d6b66;
+  --line:#d9dfd9;
+  --pine:#1f5a4a;      /* les Kokořínska */
+  --sand:#c98b3a;      /* pískovec */
+  --sand-soft:#f6ead8;
+  --lake:#2f6f8f;
+  --lake-soft:#e3eef4;
+  --warn:#b2412a;
+  --warn-soft:#f8e3dd;
+  --cta:#1f5a4a;
+  --cta-ink:#ffffff;
+  --display:"Young Serif",Georgia,"Times New Roman",serif;
+  --body:"Figtree",-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121816;--paper:#1a2220;--ink:#e6ece9;--muted:#9aa8a3;--line:#2c3734;
+  --pine:#7cc4ad;--sand:#e0a95f;--sand-soft:#2e2619;--lake:#7fb8d6;--lake-soft:#17262e;
+  --warn:#f08f78;--warn-soft:#331e19;--cta:#7cc4ad;--cta-ink:#0e1a16;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121816;--paper:#1a2220;--ink:#e6ece9;--muted:#9aa8a3;--line:#2c3734;
+  --pine:#7cc4ad;--sand:#e0a95f;--sand-soft:#2e2619;--lake:#7fb8d6;--lake-soft:#17262e;
+  --warn:#f08f78;--warn-soft:#331e19;--cta:#7cc4ad;--cta-ink:#0e1a16;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--body)}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.narrow{max-width:68ch}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,5vw,3.3rem)}
+h2{font-size:clamp(1.6rem,3.4vw,2.3rem)}
+h3{font-size:1.2rem}
+p{margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--sand)}
+section{padding-block:56px;border-top:1px solid var(--line)}
+.stack{display:flex;flex-direction:column;gap:14px}
+.muted{color:var(--muted)}
+.note{font-size:.85rem;color:var(--muted)}
+
+/* hero */
+.hero{padding-block:48px 40px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:end}
+.hero img{border-radius:6px;display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:28px}
+.facts div{background:var(--paper);padding:14px 16px;min-width:0}
+.facts b{display:block;font-family:var(--display);font-weight:400;font-size:1.35rem;font-variant-numeric:tabular-nums}
+.facts span{font-size:.8rem;color:var(--muted)}
+
+/* audit strip */
+.strip{display:grid;grid-template-columns:repeat(15,1fr);gap:4px;margin-top:22px}
+.strip figure{margin:0}
+.strip img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border-radius:3px}
+.strip figcaption{font-size:.62rem;text-align:center;color:var(--muted);line-height:1.2;margin-top:3px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.85rem}
+.dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.tag-ext{outline:3px solid var(--pine);outline-offset:-3px}
+.tag-raw{outline:3px solid var(--sand);outline-offset:-3px}
+
+/* reasons */
+.reasons-head{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.reasons-head .big{font-family:var(--display);font-size:clamp(5rem,13vw,8.5rem);line-height:.8;color:var(--warn)}
+.reasons{display:grid;gap:14px;margin-top:30px}
+.reason{display:grid;grid-template-columns:5.5rem minmax(0,1.15fr) minmax(0,1fr);gap:22px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:22px}
+.reason .num{font-family:var(--display);font-size:3.6rem;line-height:.9;color:var(--warn);text-align:center}
+.reason h3{font-size:1.35rem;margin-bottom:6px}
+.stat{display:inline-flex;align-items:baseline;gap:8px;background:var(--warn-soft);color:var(--warn);border-radius:4px;padding:3px 10px;margin-bottom:10px;font-weight:700;font-size:.85rem}
+.stat b{font-family:var(--display);font-weight:400;font-size:1.25rem}
+.reason .fix{background:var(--lake-soft);border-radius:6px;padding:14px 16px;font-size:.95rem}
+.reason .fix b{display:block;color:var(--lake);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+
+/* drone gallery */
+.have{display:inline-flex;align-items:center;gap:8px;background:var(--pine);color:var(--bg);border-radius:999px;padding:6px 14px;font-weight:700;font-size:.85rem;width:fit-content}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:8px;margin-top:22px}
+.gallery figure{margin:0;position:relative;overflow:hidden;border-radius:6px;min-width:0}
+.gallery img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:3/2}
+.gallery .g1{grid-row:span 2}
+.gallery .g1 img{aspect-ratio:auto;height:100%}
+.gallery figcaption{position:absolute;left:8px;bottom:8px;background:rgba(10,20,18,.72);color:#fff;font-size:.75rem;padding:2px 8px;border-radius:3px}
+.loc{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;margin-top:30px}
+.dist{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.dist li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line)}
+.dist b{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* buyers */
+.group{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:28px;align-items:start;margin-top:30px;padding:26px;border-radius:10px;background:var(--paper);border:1px solid var(--line)}
+.group .lbl{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
+.group.a .lbl{color:var(--pine)}
+.group.b .lbl{color:var(--sand)}
+.group ul{margin:0;padding-left:1.1em}
+.group li{margin:5px 0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.split div{background:var(--sand-soft);border-radius:6px;padding:12px;font-size:.92rem;min-width:0}
+.split b{display:block;margin-bottom:2px}
+
+/* feed ad mock (always light, it imitates a phone feed) */
+.feed{background:#fff;color:#1c1e21;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.14);overflow:hidden;max-width:340px;width:100%;justify-self:center;font-size:.85rem;border:1px solid #e4e6eb}
+.feed .top{display:flex;align-items:center;gap:8px;padding:10px 12px}
+.feed .av{width:32px;height:32px;border-radius:50%;background:#1f5a4a;color:#fff;display:grid;place-items:center;font-weight:800;font-size:.8rem;flex:none}
+.feed .nm{font-weight:700;line-height:1.2}
+.feed .sp{font-size:.72rem;color:#65676b}
+.feed .copy{padding:0 12px 10px;line-height:1.45}
+.feed img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.feed .bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 10px;padding:10px 12px;background:#f0f2f5}
+.feed .bar>div{min-width:0;flex:1 1 150px}
+.feed .bar small{display:block;color:#65676b;font-size:.68rem;text-transform:uppercase}
+.feed .bar strong{display:block;font-size:.9rem;line-height:1.25}
+.feed .btn{background:#e4e6eb;color:#1c1e21;border-radius:6px;padding:7px 12px;font-weight:700;white-space:nowrap;font-size:.82rem}
+.mocknote{font-size:.75rem;color:var(--muted);text-align:center;margin-top:8px}
+
+/* story ads */
+.stories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.story{display:flex;flex-direction:column;gap:12px;min-width:0}
+.phone{position:relative;aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 12px 30px rgba(0,0,0,.18);max-width:300px;width:100%;margin:0 auto}
+.phone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.phone .prog{position:absolute;top:10px;left:12px;right:12px;height:3px;border-radius:2px;background:rgba(255,255,255,.35)}
+.phone .prog::after{content:"";position:absolute;left:0;top:0;bottom:0;width:40%;background:#fff;border-radius:2px}
+.phone .kick{position:absolute;top:24px;left:14px;right:14px;color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.phone .low{position:absolute;left:0;right:0;bottom:0;padding:70px 16px 18px;background:linear-gradient(transparent,rgba(8,16,14,.92) 45%);color:#fff;display:flex;flex-direction:column;gap:10px}
+.phone .low strong{font-family:var(--display);font-weight:400;font-size:1.35rem;line-height:1.15}
+.phone .forme{font-size:.8rem;line-height:1.4;opacity:.92}
+.phone .cta{align-self:stretch;text-align:center;background:#fff;color:#14231e;border-radius:999px;padding:9px 12px;font-weight:800;font-size:.85rem}
+.story .who{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--muted);text-align:center}
+.wordnote{margin-top:22px;background:var(--sand-soft);border-radius:8px;padding:14px 18px;font-size:.92rem}
+
+/* videos */
+.videos{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
+.video{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:22px;min-width:0}
+.shots{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column}
+.shots li{display:grid;grid-template-columns:4.2rem 1fr;gap:12px;padding:9px 0;border-top:1px dashed var(--line);font-size:.92rem}
+.shots .t{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.82rem;padding-top:2px}
+.vo{font-style:italic;color:var(--pine)}
+.src{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:3px;padding:1px 6px;margin-right:6px;vertical-align:1px}
+.src.ok{background:var(--pine);color:var(--bg)}
+.src.ph{background:var(--sand);color:#1d1408}
+.callout{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;margin-top:22px;border:2px solid var(--sand);background:var(--sand-soft);border-radius:10px;padding:18px 20px}
+.callout .q{font-family:var(--display);font-size:2.4rem;line-height:1;color:var(--sand)}
+.callout h3{font-family:var(--body);font-weight:800;font-size:1.05rem;margin-bottom:4px}
+
+/* timeline */
+.gantt-wrap{overflow-x:auto;margin-top:26px;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+.gantt{display:grid;grid-template-columns:minmax(190px,1.4fr) repeat(6,minmax(70px,1fr));min-width:680px}
+.gantt>div{padding:12px 12px;border-top:1px solid var(--line);font-size:.9rem;position:relative}
+.gantt .wk{border-top:0;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:center}
+.gantt .task b{display:block}
+.gantt .task span{font-size:.8rem;color:var(--muted)}
+.gantt .cell{padding:12px 3px}
+.gbar{height:26px;border-radius:5px;margin-top:6px;display:flex;align-items:center;padding:0 8px;font-size:.72rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden}
+.b-you{background:var(--sand)}
+.b-we{background:var(--lake)}
+.b-go{background:var(--warn)}
+.b-ads{background:var(--pine)}
+.gantt .span{grid-column:span 1}
+.gl{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:.82rem;color:var(--muted)}
+
+/* report */
+.report{margin-top:26px;background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.report .rh{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--lake-soft)}
+.report .rh b{font-family:var(--display);font-weight:400;font-size:1.2rem}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr)}
+.kpis div{padding:16px 20px;border-right:1px solid var(--line);min-width:0}
+.kpis div:last-child{border-right:0}
+.kpis span{display:block;font-size:.78rem;color:var(--muted)}
+.kpis b{display:block;font-family:var(--display);font-weight:400;font-size:1.6rem;color:var(--muted)}
+.report .rows{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.report .rows div{padding:16px 20px;font-size:.92rem;min-width:0}
+.report .rows div+div{border-left:1px solid var(--line)}
+.report .rows h4{margin:0 0 6px;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+
+.ask{background:var(--sand-soft);border-radius:10px;padding:26px;margin-top:24px}
+.ask ol{margin:12px 0 0;padding-left:1.3em}
+.ask li{margin:8px 0}
+.ask li b{color:var(--warn)}
+.comps{width:100%;border-collapse:collapse;font-size:.9rem;font-variant-numeric:tabular-nums;min-width:520px}
+.comps th,.comps td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+.comps th{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.comps tr.me td{background:var(--sand-soft);font-weight:600}
+.tbl{overflow-x:auto;margin-top:18px}
+/* podklady */
+.pk-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.pk-facts div{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px;min-width:0}
+.pk-facts b{display:block;font-family:var(--display);font-weight:400;font-size:1.7rem;line-height:1.1;color:var(--pine);margin-bottom:6px}
+.plan-wrap{overflow-x:auto;margin-top:24px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px}
+.plan-wrap svg{display:block;width:100%;min-width:680px;height:auto}
+.plan-wrap .r{stroke:var(--ink);stroke-width:2}
+.plan-wrap .ua{fill:var(--lake-soft)}
+.plan-wrap .ub{fill:var(--sand-soft)}
+.plan-wrap .uc{fill:var(--bg)}
+.plan-wrap .out{fill:none;stroke:var(--ink);stroke-width:7}
+.plan-wrap text{fill:var(--ink);font-family:var(--body);font-size:22px;font-weight:600;text-anchor:middle}
+.plan-wrap text.m{font-size:19px;font-weight:400;fill:var(--muted)}
+.plan-wrap text.big{font-family:var(--display);font-size:34px;font-weight:400}
+.units{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:12px;font-size:.9rem}
+.units b{font-variant-numeric:tabular-nums}
+.scans{display:grid;grid-template-columns:2fr 1.3fr 1fr;gap:12px;margin-top:22px;align-items:start}
+.scans figure{margin:0;min-width:0}
+.scans img{display:block;width:100%;border-radius:6px;border:1px solid var(--line);background:#fff}
+.scans figcaption{font-size:.8rem;color:var(--muted);margin-top:6px}
+footer{padding-block:36px 56px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+
+@media (max-width:860px){
+  .hero-grid,.loc,.videos,.group{grid-template-columns:1fr}
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .strip{grid-template-columns:repeat(5,1fr)}
+  .reason{grid-template-columns:3.4rem minmax(0,1fr)}
+  .reason .num{font-size:2.6rem}
+  .reason .fix{grid-column:2}
+  .gallery{grid-template-columns:1fr 1fr}
+  .gallery .g1{grid-column:span 2;grid-row:auto}
+  .gallery .g1 img{aspect-ratio:3/2}
+  .stories{grid-template-columns:1fr 1fr}
+  .pk-facts,.scans{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+  .kpis div:nth-child(2){border-right:0}
+  .kpis div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+@media (max-width:560px){
+  .stories,.split,.report .rows{grid-template-columns:1fr}
+  .report .rows div+div{border-left:0;border-top:1px solid var(--line)}
+  .reason{grid-template-columns:1fr;gap:10px}
+  .reason .num{text-align:left}
+  .reason .fix{grid-column:auto}
+}
+@media (prefers-reduced-motion:no-preference){.phone .prog::after{animation:pr 6s linear infinite}@keyframes pr{from{width:0}to{width:100%}}}
+</style>
+
+</head>
+<body>
+<header class="wrap hero">
+  <div class="hero-grid">
+    <div class="stack">
+      <p class="eyebrow">Staré Splavy · Máchovo jezero · rozbor inzerátu</p>
+      <h1>Dům, který se prodává jako rozestavěná restaurace. A přitom je to dům pět minut pěšky od Máchova jezera.</h1>
+      <p class="muted narrow">Ahoj, podívali jsme se na inzerát vašeho domu v Dalibora z Myšlína 33, proč se zatím neprodal a jak bychom ho ukázali my. Prodej zůstává u Gepard Reality, my bychom jen dodali obsah a kampaň. Ceny za naši práci tu zatím nejsou, nejdřív si řekneme, jestli vám návrh sedí.</p>
+    </div>
+    <img src="img/01.jpg" alt="Dům z ulice Dalibora z Myšlína, žlutá fasáda, kovaná brána">
+  </div>
+  <div class="facts">
+    <div><b>1 558 m²</b><span>pozemek se zahradou a altánem</span></div>
+    <div><b>330 m²</b><span>užitná plocha, 2 podlaží + sklep</span></div>
+    <div><b>5 min</b><span>pěšky na břeh Máchova jezera</span></div>
+    <div><b>7,4 mil. Kč</b><span>na Sreality od 29. 1. 2026, na začátku 8,69 mil.</span></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="stack narrow">
+      <p class="eyebrow">Co dnes vidí kupec</p>
+      <h2>15 fotek, z toho 5 hrubé stavby a sklepa. Jezero ani jednou.</h2>
+      <p>Takhle jdou fotky v inzerátu za sebou. Zelený rámeček je dům a zahrada, oranžový sklep a nedokončené podkroví. Podle dat ve fotkách jsou interiéry z 28. 1. a exteriéry až ze 17. 5. 2026. Inzerát tak první měsíce nejspíš běžel bez fotky domu zvenku.</p>
+    </div>
+    <div class="strip" aria-label="Pořadí fotek v inzerátu">
+      <figure><img class="tag-ext" src="img/01.jpg" alt=""><figcaption>ulice</figcaption></figure>
+      <figure><img class="tag-ext" src="img/02.jpg" alt=""><figcaption>ulice</figcaption></figure>
+      <figure><img class="tag-ext" src="img/03.jpg" alt=""><figcaption>zahrada</figcaption></figure>
+      <figure><img class="tag-ext" src="img/04.jpg" alt=""><figcaption>zahrada</figcaption></figure>
+      <figure><img class="tag-ext" src="img/05.jpg" alt=""><figcaption>altán</figcaption></figure>
+      <figure><img src="img/06.jpg" alt=""><figcaption>pokoj</figcaption></figure>
+      <figure><img src="img/07.jpg" alt=""><figcaption>pokoj</figcaption></figure>
+      <figure><img src="img/08.jpg" alt=""><figcaption>kuchyň</figcaption></figure>
+      <figure><img src="img/09.jpg" alt=""><figcaption>koupelna</figcaption></figure>
+      <figure><img src="img/10.jpg" alt=""><figcaption>koupelna</figcaption></figure>
+      <figure><img class="tag-raw" src="img/11.jpg" alt=""><figcaption>sklep</figcaption></figure>
+      <figure><img class="tag-raw" src="img/12.jpg" alt=""><figcaption>chodba</figcaption></figure>
+      <figure><img class="tag-raw" src="img/13.jpg" alt=""><figcaption>podkroví</figcaption></figure>
+      <figure><img class="tag-raw" src="img/14.jpg" alt=""><figcaption>podkroví</figcaption></figure>
+      <figure><img class="tag-raw" src="img/15.jpg" alt=""><figcaption>podkroví</figcaption></figure>
+    </div>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--pine)"></i>dům a zahrada: 5</span>
+      <span><i class="dot" style="background:var(--muted)"></i>pokoje, kuchyň, koupelny: 5</span>
+      <span><i class="dot" style="background:var(--sand)"></i>hrubá stavba a sklep: 5</span>
+      <span><i class="dot" style="background:var(--lake)"></i>jezero, pláž, okolí: 0</span>
+      <span><i class="dot" style="background:var(--warn)"></i>dron, video, vizualizace, půdorys: 0</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="reasons-head">
+      <span class="big" aria-hidden="true">7</span>
+      <div class="stack narrow" style="flex:1;min-width:240px">
+        <p class="eyebrow">Proč se to neprodává</p>
+        <h2>7 důvodů, proč se dům zatím neprodal</h2>
+        <p>Inzerát má na Sreality přes 12 500 zobrazení. Lidi ho otevírají, ale nedozví se, proč by tu měli bydlet ani co by z domu udělali.</p>
+      </div>
+    </div>
+    <div class="reasons">
+      <article class="reason">
+        <span class="num">1</span>
+        <div>
+          <span class="stat"><b>2×</b> na Sreality, pokaždé jinde</span>
+          <h3>Titulek prodává problém</h3>
+          <p>„Nedokončená plánovaná přestavba domu na 3 byty s restaurací“. Rodina čte „rozestavěné“, ten, kdo hledá pronájem, neví, co kupuje. Na Sreality visí jednou jako rodinný dům a jednou jako ubytovací zařízení, se stejným textem.</p>
+        </div>
+        <p class="fix"><b>Uděláme</b>Dva inzeráty se dvěma příběhy. Pro rodinu „Dům se zahradou 1 558 m², 5 minut pěšky od Máchova jezera“. Pro pronájem „Dům u Máchova jezera: celý k pronájmu, nebo 3 apartmány“.</p>
+      </article>
+      <article class="reason">
+        <span class="num">2</span>
+        <div>
+          <span class="stat"><b>0</b> z 15 fotek ukazuje okolí</span>
+          <h3>Chybí dron, lokalita není vidět</h3>
+          <p>Břeh Máchova jezera je pět minut pěšky, vlak dvanáct. To je hlavní důvod, proč by tu někdo chtěl bydlet nebo pronajímat. V inzerátu je o tom jedna věta na konci popisu. Žádný záběr shora, žádná fotka jezera, žádná vzdálenost.</p>
+        </div>
+        <p class="fix"><b>Uděláme</b>Záběry z dronu Doks a Máchova jezera už máme vlastní (květen 2026, ukázky níž). Z nich video lokality, 3D mapa s minutami k jezeru a k vlaku a první fotky inzerátu z okolí.</p>
+      </article>
+      <article class="reason">
+        <span class="num">3</span>
+        <div>
+          <span class="stat"><b>0</b> videí · dokouká je až 75 % lidí</span>
+          <h3>Chybí video</h3>
+          <p>Podle Sreality (blog Seznamu, 25. 4. 2023) dokouká videoprohlídku až 75 % zájemců a má ji jen asi 10 % inzerátů. U domu, kde rozhoduje okolí a zahrada, je to škoda dvakrát.</p>
+        </div>
+        <p class="fix"><b>Uděláme</b>Dvě krátká videa bez natáčení: lokalita z našich záběrů a dům z rozhýbaných fotek, obojí s voiceoverem.</p>
+      </article>
+      <article class="reason">
+        <span class="num">4</span>
+        <div>
+          <span class="stat"><b>0</b> vizualizací</span>
+          <h3>Chybí vizualizace, kupec vidí jen cihly</h3>
+          <p>Poslední tři fotky jsou holé cihly v podkroví a betonová podlaha. Kupec si z toho hotový pokoj ani apartmán nepředstaví a v hlavě mu zůstane „hodně práce“.</p>
+        </div>
+        <p class="fix"><b>Uděláme</b>Dvě až tři vizualizace ze stejného úhlu jako fotky: hotové podkroví, apartmán, zahrada. Fotka a vedle ní „takhle to může vypadat“.</p>
+      </article>
+      <article class="reason">
+        <span class="num">5</span>
+        <div>
+          <span class="stat"><b>0</b> výkresů v inzerátu</span>
+          <h3>Projekt existuje, kupec ho nevidí</h3>
+          <p>K domu je projekt přestavby na penzion se stavebním povolením a podkroví v něm má dva byty 3+1 (podrobně níž). V inzerátu z toho není nic. Z fotek navíc nepoznáte, že se v přízemí i v podkroví dá bydlet hned.</p>
+        </div>
+        <p class="fix"><b>Uděláme</b>Čistý půdorys podkroví podle projektu a zakreslené přízemí. Barevně odlišíme, co je hotové a co se dokončuje.</p>
+      </article>
+      <article class="reason">
+        <span class="num">6</span>
+        <div>
+          <span class="stat"><b>G</b> mimořádně nehospodárná</span>
+          <h3>PENB G bez vysvětlení</h3>
+          <p>Třída G straší, i když dům má plynový kotel, okna z 90. let a dvoje kamna na dřevo. Kupec si domyslí horší variantu.</p>
+        </div>
+        <p class="fix"><b>Uděláme</b>Jedna věta a obrázek: co je nové, co se počítá do dokončení (zateplení podkroví, okna) a skutečné roční náklady na topení.</p>
+      </article>
+      <article class="reason">
+        <span class="num">7</span>
+        <div>
+          <span class="stat"><b>−1,29 mil.</b> bez nového obsahu</span>
+          <h3>Sleva místo nové nabídky</h3>
+          <p>Start 8,69 mil., teď 7,4 mil. a půjde níž. Každé snížení se stejnými fotkami vypadá jako „s domem je něco špatně“. Kupci sledují slevy a čekají na další.</p>
+        </div>
+        <p class="fix"><b>Uděláme</b>Nová cena půjde ven ve stejný den jako nové fotky, video a titulek. Jako nová nabídka, ne jako další sleva.</p>
+      </article>
+    </div>
+    <details class="note" style="margin-top:18px">
+      <summary>Pro srovnání: domy v okolí na Sreality (12. 11. 2026)</summary>
+      <div class="tbl">
+        <table class="comps">
+          <thead><tr><th>Kde</th><th>Dům</th><th>Pozemek</th><th>Cena</th></tr></thead>
+          <tbody>
+            <tr class="me"><td>Staré Splavy (váš)</td><td>330 m²</td><td>1 558 m²</td><td>7,4 mil.</td></tr>
+            <tr><td>Provodín</td><td>297 m²</td><td>2 452 m²</td><td>6,5 mil.</td></tr>
+            <tr><td>Doksy, Husova</td><td>250 m²</td><td>1 249 m²</td><td>6,7 mil.</td></tr>
+            <tr><td>Doksy, Valdštejnská</td><td>165 m²</td><td>662 m²</td><td>7,0 mil.</td></tr>
+            <tr><td>Doksy, Zbyny</td><td>611 m² (vícegenerační)</td><td>679 m²</td><td>8,9 mil.</td></tr>
+            <tr><td>Doksy</td><td>412 m²</td><td>1 060 m²</td><td>11,0 mil.</td></tr>
+            <tr><td>Doksy, Žďár</td><td>240 m²</td><td>3 900 m²</td><td>11,5 mil.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:8px">Nabídkové ceny, ne prodejní. Stav domů se liší, slouží jen pro orientaci.</p>
+    </details>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stack narrow">
+      <p class="eyebrow">Podklady od Geparda · 13. 11. 2026</p>
+      <h2>Projekt přestavby existuje: penzion s restaurací a dva byty v podkroví</h2>
+      <p>Jakub poslal původní projekt: technickou zprávu, řez, situaci a půdorys podkroví. Pro prodej je to důležitější, než to vypadá. Kupec, který chce dům pronajímat, nemusí začínat od nuly.</p>
+    </div>
+    <div class="pk-facts">
+      <div><b>Penzion</b>Projekt řeší přestavbu rodinného domu na penzion. V přízemí restaurace pro 23 hostů s kuchyní, v podkroví ubytování pro 12 hostů v sezóně.</div>
+      <div><b>Stavební povolení</b>Na řezu je razítko Městského úřadu v Doksech. Datum je nečitelné, nejspíš 90. léta. Jestli platí, ověříme na úřadě.</div>
+      <div><b>+166 m² přístavba</b>Situace počítá s přístavbou za domem, terasou 45 m² a 6 parkovacími místy na pozemku.</div>
+    </div>
+    <div class="plan-wrap" aria-label="Schéma podkroví podle projektu">
+      <svg viewBox="0 0 1640 660" role="img" aria-labelledby="pt">
+        <title id="pt">Schéma podkroví: byt A vlevo, schodiště uprostřed, byt B vpravo</title>
+        <!-- byt A -->
+        <rect class="r ua" x="60" y="25" width="175" height="305"/>
+        <rect class="r ua" x="235" y="25" width="80" height="175"/>
+        <rect class="r ua" x="315" y="25" width="150" height="175"/>
+        <rect class="r ua" x="465" y="25" width="155" height="215"/>
+        <rect class="r ua" x="235" y="200" width="230" height="130"/>
+        <rect class="r ua" x="60" y="330" width="205" height="260"/>
+        <rect class="r ua" x="265" y="330" width="355" height="260"/>
+        <!-- společné -->
+        <rect class="r uc" x="620" y="25" width="210" height="215"/>
+        <rect class="r uc" x="620" y="240" width="210" height="80"/>
+        <rect class="r uc" x="620" y="320" width="200" height="270"/>
+        <!-- byt B -->
+        <rect class="r ub" x="830" y="25" width="230" height="175"/>
+        <rect class="r ub" x="1060" y="25" width="90" height="175"/>
+        <rect class="r ub" x="1150" y="25" width="240" height="175"/>
+        <rect class="r ub" x="1390" y="25" width="170" height="295"/>
+        <rect class="r ub" x="830" y="200" width="560" height="120"/>
+        <rect class="r ub" x="820" y="320" width="320" height="270"/>
+        <rect class="r ub" x="1140" y="320" width="420" height="270"/>
+        <rect class="out" x="60" y="25" width="1500" height="565"/>
+        <text x="147" y="165">ložnice</text><text class="m" x="147" y="192">11,4 m²</text>
+        <text x="275" y="110" style="font-size:18px">WC</text><text class="m" x="275" y="136" style="font-size:16px">2,8</text>
+        <text x="390" y="110">koupelna</text><text class="m" x="390" y="137">4,8 m²</text>
+        <text x="542" y="125">kuchyň</text><text class="m" x="542" y="152">8,9 m²</text>
+        <text x="350" y="265">chodba</text><text class="m" x="350" y="292">10,4 m²</text>
+        <text x="162" y="455">ložnice</text><text class="m" x="162" y="482">11,3 m²</text>
+        <text x="442" y="455">obývací pokoj</text><text class="m" x="442" y="482">20,3 m²</text>
+        <text x="725" y="125">úklid</text><text class="m" x="725" y="152">4,4 m²</text>
+        <text x="725" y="288" class="m">chodba 3,4</text>
+        <text x="720" y="455">schodiště</text><text class="m" x="720" y="482">10,1 m²</text>
+        <text x="945" y="110">koupelna</text><text class="m" x="945" y="137">7,5 m²</text>
+        <text x="1105" y="110" style="font-size:18px">WC</text><text class="m" x="1105" y="136" style="font-size:16px">2,6</text>
+        <text x="1270" y="110">kuchyň</text><text class="m" x="1270" y="137">11,1 m²</text>
+        <text x="1475" y="160">ložnice</text><text class="m" x="1475" y="187">12,4 m²</text>
+        <text x="1110" y="265">chodba</text><text class="m" x="1110" y="292">12,5 m²</text>
+        <text x="980" y="455">ložnice</text><text class="m" x="980" y="482">17,2 m²</text>
+        <text x="1350" y="455">obývací pokoj</text><text class="m" x="1350" y="482">26,3 m²</text>
+        <text class="big" x="340" y="640">byt A · 3+1 · ≈ 70 m²</text>
+        <text class="big" x="1190" y="640">byt B · 3+1 · ≈ 90 m²</text>
+      </svg>
+    </div>
+    <div class="units">
+      <span><i class="dot" style="background:var(--lake)"></i>byt A: kuchyň, obývák, 2 ložnice, koupelna, WC · <b>69,8 m²</b></span>
+      <span><i class="dot" style="background:var(--sand)"></i>byt B: kuchyň, obývák, 2 ložnice, koupelna, WC · <b>89,5 m²</b></span>
+      <span><i class="dot" style="background:var(--muted)"></i>schodiště, chodba, úklid · <b>17,9 m²</b></span>
+    </div>
+    <p class="note" style="margin-top:8px">Schéma podle projektového půdorysu, rozměry místností přibližné, plochy z legendy projektu. Kolik z toho je dnes hotové, doplníme podle prohlídky. Podle inzerátu je v podkroví hotová část se 2 pokoji, kuchyní, koupelnou a terasou.</p>
+    <div class="scans">
+      <figure><a href="img/pudorys_2np.jpg" target="_blank" rel="noopener"><img src="img/pudorys_2np.jpg" alt="Původní projektový půdorys podkroví"></a><figcaption>Půdorys podkroví z projektu (klikněte pro zvětšení)</figcaption></figure>
+      <figure><a href="img/rez.jpg" target="_blank" rel="noopener"><img src="img/rez.jpg" alt="Řez domem z projektu"></a><figcaption>Řez: podkroví 2,6 m vysoké, střecha 22,5°</figcaption></figure>
+      <figure><a href="img/situace.jpg" target="_blank" rel="noopener"><img src="img/situace.jpg" alt="Situace: dům, přístavba, terasa a parkování"></a><figcaption>Situace: přístavba, terasa, 6 stání</figcaption></figure>
+    </div>
+    <div class="callout">
+      <span class="q" aria-hidden="true">?</span>
+      <div>
+        <h3>Půdorys přízemí neexistuje</h3>
+        <p>Přízemí je dnes obyvatelné (3 pokoje, kuchyň, koupelna) a vedle něj jsou rozestavěné prostory restaurace. Výkres k nim není. Stačí ruční náčrt s rozměry, nebo přízemí zaměříme sami při jedné návštěvě a nakreslíme čistě.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stack narrow">
+      <p class="eyebrow">Lokalita, kterou inzerát neukazuje</p>
+      <span class="have">✓ Záběry z dronu už máme</span>
+      <h2>Máchovo jezero máme natočené z dronu. Lokalitu nemusíme točit znovu.</h2>
+      <p>Naše vlastní záběry z Doks a Máchova jezera z 5. 5. 2026: jezero, přístav, pláže, Bezděz. Z nich postavíme video lokality i úvodní fotky inzerátu.</p>
+    </div>
+    <div class="gallery">
+      <figure class="g1"><img src="img/dron_04.jpg" alt="Máchovo jezero z dronu, lesy a břeh"><figcaption>Máchovo jezero</figcaption></figure>
+      <figure><img src="img/dron_17.jpg" alt="Písečná pláž s molem u Máchova jezera"><figcaption>pláž s molem</figcaption></figure>
+      <figure><img src="img/dron_03.jpg" alt="Přístav s loděmi na Máchově jezeře"><figcaption>přístav</figcaption></figure>
+      <figure><img src="img/dron_16.jpg" alt="Pláž a borový les u jezera"><figcaption>pláž a les</figcaption></figure>
+      <figure><img src="img/dron_11.jpg" alt="Hrad Bezděz nad krajinou"><figcaption>Bezděz</figcaption></figure>
+    </div>
+    <div class="loc">
+      <div class="stack">
+        <h3>Pět minut k vodě, dvanáct na vlak</h3>
+        <ul class="dist">
+          <li><span>Hospůdka Pod lipou</span><b>60 m</b></li>
+          <li><span>břeh Máchova jezera</span><b>370 m · 5 min</b></li>
+          <li><span>vlak, zastávka Staré Splavy</span><b>900 m · 12 min</b></li>
+          <li><span>pláž Staré Splavy</span><b>1,5 km · 20 min</b></li>
+          <li><span>pláž v Doksech</span><b>2,9 km · 40 min</b></li>
+          <li><span>pláž Borný</span><b>3 km · 40 min</b></li>
+        </ul>
+        <p class="note">Trasy pěšky po cestách z polohy domu v inzerátu, podle OpenStreetMap 12. 11. 2026. Před zveřejněním je projdeme na mapě.</p>
+      </div>
+      <figure style="margin:0">
+        <img src="img/dron_09.jpg" alt="Máchovo jezero, Doksy a pole z výšky" style="width:100%;border-radius:6px;display:block">
+        <figcaption class="note" style="margin-top:6px">Takový záběr by v inzerátu stál na prvním místě: jezero, městečko a krajina na jedné fotce.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stack narrow">
+      <p class="eyebrow">Kdo to koupí</p>
+      <h2>Dvě skupiny, dvě různé zprávy</h2>
+      <p>Jeden inzerát pro všechny dnes neosloví nikoho naplno. Rozdělili bychom to a každé skupině ukázali jinou reklamu. Vpravo je, jak by vypadala ve zdi na Facebooku a Instagramu.</p>
+    </div>
+
+    <div class="group a">
+      <div class="stack">
+        <p class="lbl">Skupina A · rodina</p>
+        <h3>„Chceme dům se zahradou a jezero za humny“</h3>
+        <p>Rodina z Prahy, Mladé Boleslavi nebo Liberce, která chce bydlet trvale nebo tu mít druhý domov. Kupuje velký pozemek, klid a okolí za cenu menšího bytu v Praze.</p>
+        <ul>
+          <li><b>Musí vidět:</b> zahradu, altán, jezero, pláž, cestu na vlak, kde bude obývák a dětské pokoje.</li>
+          <li><b>Bojí se:</b> rozestavěnosti a nákladů na dokončení. Odpověď: bydlet se dá hned (v přízemí 3 pokoje s kuchyní, v podkroví 2 pokoje s kuchyní a terasou), zbytek se dokončí postupně.</li>
+          <li><b>Kde je najdeme:</b> Sreality a reklama na Facebooku a Instagramu, rodiny 30–50 let v okruhu Praha, Mladá Boleslav, Liberec, Česká Lípa.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="feed" aria-label="Ukázka reklamy pro rodinu">
+          <div class="top"><span class="av">MJ</span><div><div class="nm">Dům u Máchova jezera</div><div class="sp">Sponzorováno</div></div></div>
+          <p class="copy">Zahrada 1 558 m², altán a ovocné stromy. Na břeh Máchova jezera dojdete za pět minut, na vlak za dvanáct. Bydlet se dá hned. 🌲🏡</p>
+          <img src="img/05.jpg" alt="Zahrada s altánem">
+          <div class="bar"><div><small>gpre.cz</small><strong>Dům se zahradou u Máchova jezera</strong></div><span class="btn">Domluvit prohlídku</span></div>
+        </div>
+        <p class="mocknote">Ukázka · reklama ve zdi 4:5</p>
+      </div>
+    </div>
+
+    <div class="group b">
+      <div class="stack">
+        <p class="lbl">Skupina B · koupě na pronájem</p>
+        <h3>„Hledám dům u vody, který budu pronajímat“</h3>
+        <p>Kolem Máchova jezera se v létě shání ubytování. Dům se dá využít dvěma způsoby:</p>
+        <div class="split">
+          <div><b>B1 · celý dům</b>Pronájem velké skupině: rodiny, přátelé, firemní akce. Hlavně sezóna, mimo ni cyklisté, Bezděz, Kokořínsko. Méně práce, jeden host.</div>
+          <div><b>B2 · apartmány nebo penzion</b>Původní projekt počítá s penzionem: restaurace v přízemí, v podkroví dva byty 3+1 pro 12 hostů. Pronajímat zvlášť, nebo dokončit podle projektu.</div>
+        </div>
+        <ul>
+          <li><b>Musí vidět:</b> projekt penzionu, půdorys podkroví, stav povolení, sezónu a vzdálenosti k plážím.</li>
+          <li><b>Kde je najdeme:</b> Sreality v kategorii ubytování a reklama na lidi, které zajímá pronájem a ubytování u vody.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="feed" aria-label="Ukázka reklamy pro koupi na pronájem">
+          <div class="top"><span class="av">MJ</span><div><div class="nm">Dům u Máchova jezera</div><div class="sp">Sponzorováno</div></div></div>
+          <p class="copy">Celý dům k pronájmu, nebo tři apartmány? 330 m² a zahrada 1 558 m² pět minut od Máchova jezera. V inzerátu najdete půdorys obou variant.</p>
+          <img src="img/dron_17.jpg" alt="Pláž s molem na Máchově jezeře">
+          <div class="bar"><div><small>gpre.cz</small><strong>Dům u jezera: celý, nebo 3 apartmány</strong></div><span class="btn">Poslat půdorys</span></div>
+        </div>
+        <p class="mocknote">Ukázka · reklama ve zdi 4:5</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stack narrow">
+      <p class="eyebrow">Ukázka kampaně</p>
+      <h2>Tři krátké reklamy na mobil, každá končí jasnou výzvou</h2>
+      <p>Svislé reklamy do Stories a Reels. Nahoře zachytí pozornost, dole řeknou, pro koho to je, a nabídnou jeden krok.</p>
+    </div>
+    <div class="stories">
+      <div class="story">
+        <div class="phone">
+          <img src="img/dron_04.jpg" alt="">
+          <span class="prog"></span>
+          <span class="kick">Staré Splavy · Máchovo jezero</span>
+          <div class="low">
+            <strong>Léto u jezera. Celý rok ve vlastním.</strong>
+            <span class="forme">Je to pro vás, pokud chcete velkou zahradu a vodu za humny.</span>
+            <span class="cta">Chci prohlídku</span>
+          </div>
+        </div>
+        <p class="who">Rodina · bydlení</p>
+      </div>
+      <div class="story">
+        <div class="phone">
+          <img src="img/04.jpg" alt="">
+          <span class="prog"></span>
+          <span class="kick">5 min pěšky k jezeru</span>
+          <div class="low">
+            <strong>Dům pro velkou partu. Zahrada, altán, jezero.</strong>
+            <span class="forme">Je to pro vás, pokud hledáte dům, který budete celý pronajímat.</span>
+            <span class="cta">Poslat podrobnosti</span>
+          </div>
+        </div>
+        <p class="who">Pronájem celku</p>
+      </div>
+      <div class="story">
+        <div class="phone">
+          <img src="img/14.jpg" alt="">
+          <span class="prog"></span>
+          <span class="kick">Podkroví dnes → vizualizace</span>
+          <div class="low">
+            <strong>Apartmány u Máchova jezera. Projekt penzionu už existuje.</strong>
+            <span class="forme">Je to pro vás, pokud chcete apartmány pronajímat zvlášť.</span>
+            <span class="cta">Poslat půdorys</span>
+          </div>
+        </div>
+        <p class="who">Apartmány</p>
+      </div>
+    </div>
+    <p class="wordnote"><b>Pozor na slova v reklamě:</b> nepíšeme „investice“, „investor“ ani „výnos“. Reklama na Facebooku a Instagramu u nemovitostí s tím má potíže a slib výnosu bez čísel působí podezřele. Píšeme, co se s domem dá dělat: „celý k pronájmu“, „tři apartmány“.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stack narrow">
+      <p class="eyebrow">Videa</p>
+      <h2>Nejdřív místo, pak dům</h2>
+      <p>Obě videa bez nového natáčení. Video lokality postavíme z našich záběrů z dronu, video domu z rozhýbaných fotek z inzerátu. Přes obojí jde klidný voiceover.</p>
+    </div>
+    <div class="videos">
+      <div class="video">
+        <h3>Video 1 · Lokalita, 30–40 s</h3>
+        <ul class="shots">
+          <li><span class="t">0–6 s</span><span><span class="src ok">máme</span>Dron nad Máchovým jezerem. <span class="vo">„Máchovo jezero. Místo, kam lidi jezdí na dovolenou.“</span></span></li>
+          <li><span class="t">6–14 s</span><span><span class="src ok">máme</span>Pláž s molem, přístav, lesy, Bezděz.</span></li>
+          <li><span class="t">14–24 s</span><span><span class="src ok">uděláme</span>3D mapa: dům, jezero, vlak, minuty pěšky. <span class="vo">„Pět minut pěšky k vodě, dvanáct na vlak.“</span></span></li>
+          <li><span class="t">24–36 s</span><span><span class="src ph">z fotek</span>Dolet na ulici a dům. Dron domu nemáme, poskládáme ho z fotek. <span class="vo">„Tady můžete bydlet celý rok.“</span></span></li>
+        </ul>
+      </div>
+      <div class="video">
+        <h3>Video 2 · Dům, 45–60 s</h3>
+        <ul class="shots">
+          <li><span class="t">0–8 s</span><span><span class="src ph">z fotek</span>Zahrada a altán, pomalý pohyb kamery. <span class="vo">„Zahrada přes patnáct set metrů.“</span></span></li>
+          <li><span class="t">8–24 s</span><span><span class="src ph">z fotek</span>Přízemí a hotová část podkroví: pokoje, kuchyně, koupelny, terasa. <span class="vo">„Bydlet se tu dá hned.“</span></span></li>
+          <li><span class="t">24–40 s</span><span><span class="src ph">z fotek</span>Podkroví dnes, pak prolnutí do vizualizace. <span class="vo">„Podkroví a rozestavěná restaurace čekají na vás: rodinné pokoje, nebo tři apartmány.“</span></span></li>
+          <li><span class="t">40–55 s</span><span><span class="src ok">uděláme</span>Půdorys dnes / po dokončení, kontakt na makléře.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">
+      <span class="q" aria-hidden="true">?</span>
+      <div>
+        <h3>Máte víc fotek domu? Hlavně z dronu?</h3>
+        <p>Dolet na dům a pohyb po zahradě skládáme jen z 15 fotek v inzerátu. Pokud máte fotku nebo video domu z dronu, zahradu v létě, terasu nebo cestu k jezeru, pošlete je. Každý další úhel znamená přirozenější video. Jinak bychom dům z dronu museli dotočit.</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:14px">Každé video ve dvou střizích: rodina (bydlení, zahrada, vlak) a pronájem (sezóna, pláže, apartmány). Formáty 16:9 pro inzerát a 9:16 pro reklamu.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="stack narrow">
+      <p class="eyebrow">Postup</p>
+      <h2>Harmonogram na šest týdnů</h2>
+      <p>Od podkladů po vyhodnocení reklamy. Týden 1 začíná dnem, kdy od vás dostaneme půdorysy a fotky.</p>
+    </div>
+    <div class="gantt-wrap">
+      <div class="gantt" role="table" aria-label="Harmonogram po týdnech">
+        <div class="wk" style="text-align:left">Krok</div><div class="wk">Týden 1</div><div class="wk">Týden 2</div><div class="wk">Týden 3</div><div class="wk">Týden 4</div><div class="wk">Týden 5</div><div class="wk">Týden 6</div>
+
+        <div class="task"><b>Podklady od vás</b><span>půdorysy, povolení, fotky, nová cena</span></div>
+        <div class="cell"><div class="gbar b-you">vy</div></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+        <div class="task"><b>Nový inzerát</b><span>2 titulky, pořadí fotek, lokalita, PENB</span></div>
+        <div class="cell"><div class="gbar b-we">texty</div></div><div class="cell"><div class="gbar b-we">fotky</div></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+        <div class="task"><b>Videa, vizualizace, půdorys</b><span>lokalita, dům, 3D mapa</span></div>
+        <div class="cell"><div class="gbar b-we">střih</div></div><div class="cell"><div class="gbar b-we">VO + viz</div></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+        <div class="task"><b>Spuštění s novou cenou</b><span>inzerát, video a cena v jeden den</span></div>
+        <div class="cell"></div><div class="cell"></div><div class="cell"><div class="gbar b-go">start</div></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+
+        <div class="task"><b>Reklama A + B</b><span>rodina a pronájem zvlášť</span></div>
+        <div class="cell"></div><div class="cell"></div><div class="cell"><div class="gbar b-ads">běží</div></div><div class="cell"><div class="gbar b-ads">běží</div></div><div class="cell"><div class="gbar b-ads">běží</div></div><div class="cell"><div class="gbar b-ads">běží</div></div>
+
+        <div class="task"><b>Zpráva o reklamě</b><span>každý týden + úprava reklam</span></div>
+        <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"><div class="gbar b-we">zpráva</div></div><div class="cell"><div class="gbar b-we">zpráva</div></div><div class="cell"><div class="gbar b-go">vyhodnocení</div></div>
+      </div>
+    </div>
+    <div class="gl">
+      <span><i class="dot" style="background:var(--sand)"></i>vy</span>
+      <span><i class="dot" style="background:var(--lake)"></i>my</span>
+      <span><i class="dot" style="background:var(--warn)"></i>milník</span>
+      <span><i class="dot" style="background:var(--pine)"></i>reklama běží</span>
+    </div>
+
+    <div class="report" aria-label="Ukázka týdenní zprávy o reklamě">
+      <div class="rh"><b>Týdenní zpráva o reklamě</b><span class="note">ukázka · čísla doplníme po spuštění</span></div>
+      <div class="kpis">
+        <div><span>Kolik lidí reklamu vidělo</span><b>—</b></div>
+        <div><span>Kolik kliklo na inzerát</span><b>—</b></div>
+        <div><span>Kolik se ozvalo</span><b>—</b></div>
+        <div><span>Domluvené prohlídky</span><b>—</b></div>
+      </div>
+      <div class="rows">
+        <div><h4 style="color:var(--pine)">Skupina A · rodina</h4><p>Která reklama funguje nejlíp, odkud jsou lidé, kolik stojí jeden zájemce.</p></div>
+        <div><h4 style="color:var(--sand)">Skupina B · pronájem</h4><p>Totéž pro celý dům a apartmány zvlášť. Co nefunguje, vypneme a peníze přesuneme.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="ask narrow">
+      <h2 style="font-size:1.6rem">Co od vás potřebujeme</h2>
+      <ol>
+        <li><b>Přízemí:</b> ruční náčrt s rozměry, nebo nám dejte vědět, kdy můžeme přijet zaměřit. Podkroví z projektu už máme, díky.</li>
+        <li>Rozhodnutí o stavebním povolení na penzion: máte ho? A co přesně se kolaudovalo v roce 2000?</li>
+        <li>Na kolik jde cena dolů a odkdy.</li>
+        <li>Kolik stojí topení za rok a co by podle vás stálo dokončení podkroví.</li>
+        <li>Další fotky domu: <b>z dronu</b> (fotka nebo video domu shora), zahrada v létě, terasa, cesta k jezeru.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>František Dron s.r.o. · podklady: inzerát gpre.cz č. 12534 a Sreality (stav 12. 11. 2026), OpenStreetMap, naše záběry z dronu z Doks a Máchova jezera (5. 5. 2026). Projektová dokumentace a fotky domu: Gepard Reality (13. 11. 2026). Reklamy jsou ukázky, nic neběží.</p>
+  </div>
+</footer>
+
+</body>
+</html>
